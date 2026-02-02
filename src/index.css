@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 transition-colors duration-300;
+}
+
+.light body {
+  @apply bg-gray-100 text-slate-900;
+}
+
+/* =========================
+   GLOBAL GLASS (NO BLUR)
+========================= */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* =========================
+   3D SUPPORT
+========================= */
+.perspective {
+  perspective: 1200px;
+}
+
+/* =========================
+   NEON TEXT
+========================= */
+.neon {
+  text-shadow:
+    0 0 12px rgba(99,102,241,0.9),
+    0 0 30px rgba(168,85,247,0.7);
+}
+
+
+
+
+/* animated gradient background */
+.bg-animated {
+  background: linear-gradient(
+    -45deg,
+    #0f172a,
+    #020617,
+    #1e1b4b,
+    #020617
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+.light .bg-animated {
+  background: linear-gradient(
+    -45deg,
+    #ffffff,
+    #f1f5f9,
+    #e0e7ff,
+    #ffffff
+  );
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.glass-card {
+  @apply bg-white/10 backdrop-blur-xl border border-white/20
+         rounded-2xl p-6 md:p-8
+         text-slate-100
+         transition-all duration-300;
+}
+
+.light .glass-card {
+  @apply bg-black/10 border-black/20 text-slate-900;
+}
+
+
+/* 3D Card Base */
+.card-3d {
+  perspective: 1200px;
+}
+
+.card-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.card-3d:hover .card-inner {
+  transform: rotateY(12deg) rotateX(8deg) scale(1.05);
+}
+
+/* Glow border */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(
+    120deg,
+    #6366f1,
+    #a855f7,
+    #ec4899
+  );
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.8;
+}
+
+/* Neon text */
+.neon {
+  text-shadow:
+    0 0 10px rgba(99,102,241,0.8),
+    0 0 30px rgba(168,85,247,0.6);
+}
